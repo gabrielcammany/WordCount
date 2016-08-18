@@ -1,0 +1,17 @@
+hash;time MS;Collisions;
+the_chautauquan.txt;563867;392;
+JSHash;4;290;
+PJWHash;1;215;
+ELFHash;0;163;
+PJWHash;1;223;
+BKDRHash;0;294;
+SDBMHash;1;190;
+DJBHash;0;294;
+DEKHash;1;132;
+BPHash;0;203;
+FNVHash;1;189;
+APHash;0;231;
+MurMurhash32;1;135;
+MurMurhash64;1;131;
+asci;5;256;
+basic;2;27423;
