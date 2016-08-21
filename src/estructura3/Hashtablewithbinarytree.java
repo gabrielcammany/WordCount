@@ -3,7 +3,7 @@ package estructura3;
 import java.math.BigInteger;
 
 import model.Word;
-import model.binarytree.TreeManager;
+import model.binarytree.BinaryTree;
 import model.hashtable.HashFunctionLibrary;
 
 public class Hashtablewithbinarytree{
@@ -30,14 +30,8 @@ public class Hashtablewithbinarytree{
 		//declaracions
 		int hash = hash(key);
 		Tree t = table[hash];
-		TreeManager tm = t.getTree();
-			 if(!t.isInici()){ 
-				 tm.trobaPosicio(tm.getArbrePrincipal(),tm.getArbrePrincipal().quinCami(value), value,TreeManager.LEFT);
-				}
-			 else{
-				 tm.getArbrePrincipal().setParaula(new Word(value));
-				 t.setInici(Boolean.FALSE);
-			 }
+		BinaryTree tm = t.getTree();
+		tm.trobaPosicio(tm.getArbrePrincipal(),value,BinaryTree.LEFT);
 	}
 /*
 	public Word consulta (String key){

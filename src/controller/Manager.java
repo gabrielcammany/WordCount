@@ -68,7 +68,7 @@ public class Manager {
 	 * Calcula depenen de la estructuraclicada"
 	 */
 	public void calculate() {
-		tiempo = new Time();
+		model.getList().clear();
 		switch (view.getStructureOptionSelected()) {
 		case MainWindow.STRUCTURE0:
 			model.count();
@@ -77,6 +77,7 @@ public class Manager {
 			model.countWithBinaryTree();
 			break;
 		case MainWindow.STRUCTURE2:
+			model.countWithAVLTree();
 			break;
 		case MainWindow.STRUCTURE3:
 			model.countWithHashTable(hash2);
@@ -85,7 +86,7 @@ public class Manager {
 			model.countWithHashTableplusTree(hash2);
 			break;
 		}
-		tiempo.setTemps_final();
+		tiempo = model.getTiempo();
 		view.showDialog("Finalize in " + tiempo.getDurationBreakdown(tiempo.gettempsExecucio()));
 	}
 

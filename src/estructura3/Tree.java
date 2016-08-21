@@ -1,16 +1,16 @@
 package estructura3;
 
-import model.binarytree.TreeManager;
+import model.binarytree.BinaryTree;
 
 public class Tree {
 	boolean inici;
-	TreeManager arbre;
+	BinaryTree arbre;
 	
 	
 	public Tree() {
 		super();
 		inici= Boolean.TRUE;
-		arbre = new TreeManager();
+		arbre = new BinaryTree();
 	}
 	
 	public boolean isInici() {
@@ -21,7 +21,7 @@ public class Tree {
 		this.inici = b;
 	}
 	
-	public TreeManager getTree(){
+	public BinaryTree getTree(){
 		return arbre;
 	}
 }

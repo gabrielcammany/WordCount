@@ -4,14 +4,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 import estructura3.Hashtablewithbinarytree;
-import model.binarytree.TreeManager;
+import model.avltree.ArbreAVL;
+import model.binarytree.BinaryTree;
 import model.hashtable.HashTable;
+import tools.Time;
 
 public class WordManager {
 	
-	private List<String> words;
+	private ArrayList<String> words;
 	private ArrayList<Word> llista;
 	private String extra;
+	private Time tiempo;
 	
 	public WordManager(){
 		llista = new ArrayList<>();
@@ -20,7 +23,7 @@ public class WordManager {
 	
 	public void setWords(List<String> words) {
 		if(words!=null){
-			this.words=words;
+			this.words=new ArrayList<String>(words);
 		}
 	}
 	
@@ -29,7 +32,7 @@ public class WordManager {
 		else return 0;
 	}
 	public void count(){
-		llista.removeAll(llista);
+		tiempo = new Time();
 		for(String paraula : words){
 			boolean trobat = Boolean.FALSE;
 			for(Word w : llista){
@@ -40,31 +43,38 @@ public class WordManager {
 			}
 			if(!trobat) llista.add(new Word(paraula));
 		}
+		tiempo.setTemps_final();
 	}
 	
 	public void countWithBinaryTree(){
-		llista.removeAll(llista);
-		TreeManager binaryTree = new TreeManager();
-		boolean inici = true;
+		BinaryTree binaryTree = new BinaryTree();
+		tiempo = new Time();
 		for(String paraula : words){
-			 if(!inici){ 
-				 binaryTree.trobaPosicio(binaryTree.getArbrePrincipal(),binaryTree.getArbrePrincipal().quinCami(paraula), paraula,TreeManager.LEFT);
-				}
-			 else if(inici){
-				 binaryTree.getArbrePrincipal().setParaula(new Word(paraula));
-				 inici = Boolean.FALSE;
-			 }
+			binaryTree.trobaPosicio(binaryTree.getArbrePrincipal(), paraula,BinaryTree.LEFT);
 		}
-		llista = binaryTree.printaInOrder(binaryTree.getArbrePrincipal());
+		tiempo.setTemps_final();
+		llista = binaryTree.printaInOrder();
 		extra = "Binary Tree with " + binaryTree.getNivells() + " levels";
 	}
 	
+	public void countWithAVLTree(){
+		ArbreAVL avl = new ArbreAVL();
+		tiempo = new Time();
+		for(String paraula : words){
+			avl.insertar(new Word(paraula));
+		}
+		tiempo.setTemps_final();
+		llista = avl.printaInOrder();
+		extra = "Binary Tree with " + avl.getLevel() + " levels";
+	}
+	
 	public void countWithHashTable(String hashfunction){
+		tiempo = new Time();
 		HashTable hash = new HashTable(words.size(), hashfunction);
-		llista.removeAll(llista);
 		for(String paraula : words){
 			hash.insert(paraula, paraula, hashfunction);
 		}
+		tiempo.setTemps_final();
 		llista = hash.getTable();
 		extra = "Static Hash Table ("+ HashTable.hashfunction +") with " + words.size() + " size\n"+"Collision: " + hash.getCollisions();
 	}
@@ -82,12 +92,21 @@ public class WordManager {
 
 	public void countWithHashTableplusTree(String hashfunction) {
 		Hashtablewithbinarytree hash = new Hashtablewithbinarytree(words.size(), hashfunction);
-		llista.removeAll(llista);
+		tiempo = new Time();
 		for(String paraula : words){
 			hash.insert(paraula, paraula);
 		}
+		tiempo.setTemps_final();
 		//llista = hash.getTable();
 		extra = "Static Hash Table ("+ HashTable.hashfunction +") with " + words.size() + " size\n"+"Collision: " + hash.getCollisions();
 		
+	}
+
+	public Time getTiempo() {
+		return tiempo;
+	}
+
+	public void setTiempo(Time tiempo) {
+		this.tiempo = tiempo;
 	}	
 }
