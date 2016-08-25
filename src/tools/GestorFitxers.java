@@ -84,6 +84,7 @@ public class GestorFitxers {
 		html.agregarBody();
 		html.agregarHead("Analysis of " + filename);
 		html.agregarText("Number of words: " + String.valueOf(wordNumber));
+		System.out.println("Number of words: " + words.size());
 		html.agregarText("Number of Unique Words: " + words.size());
 		if (extra!=null) html.agregarText(extra);
 		html.agregarText("Time: " + tiempo.getDurationBreakdown(tiempo.gettempsExecucio()));

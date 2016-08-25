@@ -1,12 +1,14 @@
 package estructura3;
 
 import java.math.BigInteger;
+import java.util.ArrayList;
 
 import model.Word;
+import model.avltree.ArbreAVL;
 import model.binarytree.BinaryTree;
 import model.hashtable.HashFunctionLibrary;
 
-public class Hashtablewithbinarytree{
+public class HashtablewithAVLTree{
 
 
 	public static String hashfunction;
@@ -16,24 +18,22 @@ public class Hashtablewithbinarytree{
 	public static BigInteger collision;
 	
 	//create hashtable
-	public Hashtablewithbinarytree(int tablesize, String hashfunction){
+	public HashtablewithAVLTree(int tablesize, String hashfunction){
 		this.tablesize = tablesize;
 		table = new Tree[tablesize];
 		collision = BigInteger.valueOf(0);
-		this.hashfunction = hashfunction;
+		HashtablewithAVLTree.hashfunction = hashfunction;
 		for (int i = 0; i<tablesize; i++){
 			table[i] = new Tree();
 		}
 	}
 	
-	public void insert (String key, String value){
-		//declaracions
-		int hash = hash(key);
-		Tree t = table[hash];
-		BinaryTree tm = t.getTree();
-		tm.trobaPosicio(tm.getArbrePrincipal(),value,BinaryTree.LEFT);
+	public void insert (String keyAndValue){
+		table[hash(keyAndValue)].getTree().insertar(new Word(keyAndValue));
 	}
+	
 /*
+ * 
 	public Word consulta (String key){
 		Boolean trobat = Boolean.FALSE;
 		HashEntry aux;

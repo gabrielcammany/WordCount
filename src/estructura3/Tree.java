@@ -1,16 +1,17 @@
 package estructura3;
 
+import model.avltree.ArbreAVL;
 import model.binarytree.BinaryTree;
 
 public class Tree {
 	boolean inici;
-	BinaryTree arbre;
+	ArbreAVL arbre;
 	
 	
 	public Tree() {
 		super();
 		inici= Boolean.TRUE;
-		arbre = new BinaryTree();
+		arbre = new ArbreAVL();
 	}
 	
 	public boolean isInici() {
@@ -21,7 +22,7 @@ public class Tree {
 		this.inici = b;
 	}
 	
-	public BinaryTree getTree(){
+	public ArbreAVL getTree(){
 		return arbre;
 	}
 }

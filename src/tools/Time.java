@@ -18,7 +18,7 @@ public class Time {
 	 * Constructor, setejem el temps inicial
 	 */
 	public Time() {
-		setTemps_inici((int) System.currentTimeMillis());
+		setTemps_inici((int) System.nanoTime());
 	}
 	
 	/**
@@ -49,7 +49,7 @@ public class Time {
 	 * @param temps_final
 	 */
 	public void setTemps_final() {
-		this.temps_final = (int) System.currentTimeMillis();;
+		this.temps_final = (int) System.nanoTime();
 	}
 	
 	/**
@@ -79,13 +79,12 @@ public class Time {
     {
         if(millis < 0)  throw new IllegalArgumentException("Duration must be greater than zero!");
         
-        long hours = TimeUnit.MILLISECONDS.toHours(millis);
-        millis -= hours*60*60*1000;
-        long minutes = TimeUnit.MILLISECONDS.toMinutes(millis);
-        millis -= minutes*60*1000;
-        long seconds = TimeUnit.MILLISECONDS.toSeconds(millis);
-        millis -=  seconds*1000;
-
+        long hours = TimeUnit.NANOSECONDS.toHours(millis);
+        long minutes = TimeUnit.NANOSECONDS.toMinutes(millis);
+        long seconds = TimeUnit.NANOSECONDS.toSeconds(millis);
+        long milis = TimeUnit.NANOSECONDS.toMillis(millis);
+        long nanos = TimeUnit.NANOSECONDS.toNanos(millis);
+        
         StringBuilder sb = new StringBuilder(64);
         sb.append(hours);
         sb.append(" Hours ");
@@ -93,7 +92,7 @@ public class Time {
         sb.append(" Minutes ");
         sb.append(seconds);
         sb.append(" Seconds ");
-        sb.append(millis);
+        sb.append(milis);
         sb.append(" Miliseconds");
 
         return(sb.toString());

@@ -3,7 +3,7 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 
-import estructura3.Hashtablewithbinarytree;
+import estructura3.HashtablewithAVLTree;
 import model.avltree.ArbreAVL;
 import model.binarytree.BinaryTree;
 import model.hashtable.HashTable;
@@ -11,7 +11,7 @@ import tools.Time;
 
 public class WordManager {
 	
-	private ArrayList<String> words;
+	private List<String> words;
 	private ArrayList<Word> llista;
 	private String extra;
 	private Time tiempo;
@@ -23,7 +23,7 @@ public class WordManager {
 	
 	public void setWords(List<String> words) {
 		if(words!=null){
-			this.words=new ArrayList<String>(words);
+			this.words=words;
 		}
 	}
 	
@@ -59,11 +59,16 @@ public class WordManager {
 	
 	public void countWithAVLTree(){
 		ArbreAVL avl = new ArbreAVL();
-		tiempo = new Time();
+		tiempo = null;
 		for(String paraula : words){
-			avl.insertar(new Word(paraula));
+			if(tiempo == null){
+				tiempo = new Time();
+				avl.insertar(new Word(paraula));
+				tiempo.setTemps_final();
+			}else{
+				avl.insertar(new Word(paraula));
+			}
 		}
-		tiempo.setTemps_final();
 		llista = avl.printaInOrder();
 		extra = "Binary Tree with " + avl.getLevel() + " levels";
 	}
@@ -82,7 +87,7 @@ public class WordManager {
 		return extra;
 	}
 
-	public ArrayList<Word> getList() {
+	public List<Word> getList() {
 		return llista;
 	}
 	public int listNumber() {
@@ -91,13 +96,12 @@ public class WordManager {
 	}
 
 	public void countWithHashTableplusTree(String hashfunction) {
-		Hashtablewithbinarytree hash = new Hashtablewithbinarytree(words.size(), hashfunction);
+		HashtablewithAVLTree hash = new HashtablewithAVLTree(words.size(), hashfunction);
 		tiempo = new Time();
 		for(String paraula : words){
-			hash.insert(paraula, paraula);
+			hash.insert(paraula);
 		}
 		tiempo.setTemps_final();
-		//llista = hash.getTable();
 		extra = "Static Hash Table ("+ HashTable.hashfunction +") with " + words.size() + " size\n"+"Collision: " + hash.getCollisions();
 		
 	}
