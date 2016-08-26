@@ -16,8 +16,8 @@ public class ArbreAVL {
             return;
         }
 
-
-        if (0 > paraula.getName().compareTo(node.paraula.getName())  ) {
+        int aux = paraula.getName().compareTo(node.paraula.getName());
+        if (0 > aux){
         	
         	
             if (node.esquerra != null) {
@@ -36,7 +36,7 @@ public class ArbreAVL {
                 	rotacioLR(node);
                 }
             }
-        } else if (0 < paraula.getName().compareTo(node.paraula.getName())) {
+        } else if (0 < aux) {
             if (node.dreta != null) {
             	nivell++;
             	trobaPosicio(node.dreta, paraula,nivell);
@@ -71,9 +71,8 @@ public class ArbreAVL {
     private void rotarDreta(Node arbre) {
         Node arrel = arbre.parent;
         Node fillEsquerra = arbre.esquerra;
-        Node auxFillEsquerra = fillEsquerra.dreta;
         
-        arbre.setFillEsquerra(auxFillEsquerra);
+        arbre.setFillEsquerra(fillEsquerra.dreta);
         fillEsquerra.setFillDret(arbre);
         if (arrel == null) {
             this.arrel = fillEsquerra;
@@ -94,8 +93,7 @@ public class ArbreAVL {
     private void rotarEsquerra(Node arbre) {
         Node arrel = arbre.parent;
         Node fillDret = arbre.dreta;
-        Node auxFillDret = fillDret.esquerra;
-        arbre.setFillDret(auxFillDret);
+        arbre.setFillDret(fillDret.esquerra);
         fillDret.setFillEsquerra(arbre);
         
         if (arrel == null) {
