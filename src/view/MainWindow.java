@@ -27,7 +27,7 @@ public class MainWindow extends JFrame{
 	public static final String STRUCTURE1 = "Binary Tree";
 	public static final String STRUCTURE2 = "AVL tree";
 	public static final String STRUCTURE3 = "Hash Tables";
-	public static final String STRUCTURE4 = "Other";	
+	public static final String STRUCTURE4 = "Hash + Tree";	
 	public static final String OPTION0 = "Select Entry File";
 	public static final String OPTION1 = "Calculate";
 	public static final String OPTION2 = "See Result";

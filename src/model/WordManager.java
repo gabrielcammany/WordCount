@@ -91,7 +91,7 @@ public class WordManager {
 	}
 
 	public void countWithHashTableplusTree(String hashfunction) {
-		HashtablewithAVLTree hash = new HashtablewithAVLTree();
+		HashtablewithAVLTree hash = new HashtablewithAVLTree(words.size(), hashfunction);
 		tiempo = new Time();
 		for(String paraula : words){
 			hash.insert(paraula);

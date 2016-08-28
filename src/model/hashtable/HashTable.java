@@ -14,6 +14,7 @@ public class HashTable {
 	public static BigInteger collision;
 	
 	//create hashtable
+	@SuppressWarnings("static-access")
 	public HashTable(int tablesize, String hashfunction){
 		this.tablesize = tablesize;
 		table = new HashEntry[tablesize];

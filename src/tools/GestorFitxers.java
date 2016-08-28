@@ -92,8 +92,8 @@ public class GestorFitxers {
 		timeofOrder.setTemps_final();
 		html.agregarText("Order Time: " + timeofOrder.getDurationBreakdown(timeofOrder.gettempsExecucio()));
 		html.agregarTaula();
-		//MAX_HTML = words.size();
-		MAX_HTML = 100;
+		MAX_HTML = words.size();
+		//MAX_HTML = 100;
 		for (int i = 0; i<MAX_HTML; i++){
 			html.agregarCampTaula( words.get(i).toList());
 		}
