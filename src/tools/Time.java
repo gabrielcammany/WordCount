@@ -13,6 +13,7 @@ public class Time {
 	 * Variables on guardarem el temps inicial i final
 	 */
 	private int temps_inici, temps_final;
+	private int temps_iniciOrdenacio, temps_finalOrdenacio;
 	
 	/**
 	 * Constructor, setejem el temps inicial
@@ -98,4 +99,20 @@ public class Time {
 
         return(sb.toString());
     }
+
+	public int getTemps_iniciOrdenacio() {
+		return temps_iniciOrdenacio;
+	}
+
+	public void setTemps_iniciOrdenacio() {
+		this.temps_iniciOrdenacio = ((int) System.currentTimeMillis());
+	}
+
+	public int getTemps_finalOrdenacio() {
+		return temps_finalOrdenacio;
+	}
+
+	public void setTemps_finalOrdenacio() {
+		this.temps_finalOrdenacio = (int) System.currentTimeMillis();
+	}
 }

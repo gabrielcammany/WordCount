@@ -99,7 +99,7 @@ public class Manager {
 			model.countWithHashTable(hash2);
 			break;
 		case MainWindow.STRUCTURE4:
-			model.countWithHashTableplusTree(hash2);
+			model.countWithHashTableplusTree(hash16);
 			break;
 		}
 		tiempo = model.getTiempo();
@@ -115,7 +115,7 @@ public class Manager {
 	}
 
 	public void showResult() {
-		gf.createHTML(model.getList(), tiempo, model.wordNumber(), model.getExtra(), book.getName().split(".txt")[0]);
+		gf.createHTML(model, book.getName().split(".txt")[0]);
 	}
 	public static String humanReadableByteCount(long bytes, boolean si) {
 	    int unit = si ? 1000 : 1024;

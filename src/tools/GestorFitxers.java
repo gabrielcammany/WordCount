@@ -3,12 +3,14 @@ import java.awt.Desktop;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
 
 import model.Word;
+import model.WordManager;
 
 /**
  * Classe que s'ocupa de getionar els recursos que tenim al local
@@ -78,8 +80,11 @@ public class GestorFitxers {
 		}
 		return null;
 	}
-	public void createHTML(List<Word> words, Time tiempo, int wordNumber, String extra, String filename){
-		Time timeofOrder = new Time();
+	public void createHTML(WordManager model,String filename){
+		List<Word> words = model.getList();
+		Time tiempo = model.getTiempo();
+		int wordNumber = model.wordNumber();
+		String extra = model.getExtra();
 		FitxerHTML html = new FitxerHTML();
 		html.agregarBody();
 		html.agregarHead("Analysis of " + filename);
@@ -88,9 +93,10 @@ public class GestorFitxers {
 		html.agregarText("Number of Unique Words: " + words.size());
 		if (extra!=null) html.agregarText(extra);
 		html.agregarText("Time: " + tiempo.getDurationBreakdown(tiempo.gettempsExecucio()));
+		Time timeofOrder = new Time();
 		Collections.sort(words);
 		timeofOrder.setTemps_final();
-		html.agregarText("Order Time: " + timeofOrder.getDurationBreakdown(timeofOrder.gettempsExecucio()));
+		html.agregarText("Order Time: " + timeofOrder.getDurationBreakdown(timeofOrder.gettempsExecucio()+tiempo.getTemps_finalOrdenacio()-tiempo.getTemps_iniciOrdenacio()));
 		html.agregarTaula();
 		MAX_HTML = words.size();
 		//MAX_HTML = 100;

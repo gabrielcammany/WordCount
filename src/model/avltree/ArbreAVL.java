@@ -11,12 +11,12 @@ public class ArbreAVL {
 	private ArrayList<Word> list;
     
     public void trobaPosicio(Node node, Word paraula, int nivell) {
-        if (arrel == null) {
-            arrel = new Node(paraula, null);
+        if (getArrel() == null) {
+            setArrel(new Node(paraula, null));
             return;
         }
 
-        int aux = paraula.getName().compareTo(node.paraula.getName());
+        int aux = paraula.getName().compareTo(node.getParaula().getName());
         if (0 > aux){
         	
         	
@@ -30,7 +30,7 @@ public class ArbreAVL {
             }
 
             if (altura(node.esquerra) - altura(node.dreta) == 2) {
-                if (0 > paraula.getName().compareTo(node.esquerra.paraula.getName())) {
+                if (0 > paraula.getName().compareTo(node.esquerra.getParaula().getName())) {
                     rotarDreta(node);
                 } else {
                 	rotacioLR(node);
@@ -47,20 +47,20 @@ public class ArbreAVL {
             }
 
             if (altura(node.dreta) - altura(node.esquerra) == 2) {
-                if (0 < paraula.getName().compareTo(node.dreta.paraula.getName())){
+                if (0 < paraula.getName().compareTo(node.dreta.getParaula().getName())){
                     rotarEsquerra(node);
                 }else {
                     rotacioRL(node);
                 }
             }
-        }else{	node.paraula.addCount(); }
+        }else{	node.getParaula().addCount(); }
 
         actualitzaAltura(node);
     }
 
 
     public void insertar(Word data) {
-    	trobaPosicio(arrel, data,0);
+    	trobaPosicio(getArrel(), data,0);
     }
 
     public int altura(Node node) {
@@ -75,7 +75,7 @@ public class ArbreAVL {
         arbre.setFillEsquerra(fillEsquerra.dreta);
         fillEsquerra.setFillDret(arbre);
         if (arrel == null) {
-            this.arrel = fillEsquerra;
+            this.setArrel(fillEsquerra);
             fillEsquerra.parent = null;
             return;
         }
@@ -97,7 +97,7 @@ public class ArbreAVL {
         fillDret.setFillEsquerra(arbre);
         
         if (arrel == null) {
-            this.arrel = fillDret;
+            this.setArrel(fillDret);
             fillDret.parent = null;
             return;
         }
@@ -128,7 +128,7 @@ public class ArbreAVL {
 
     public ArrayList<Word> printaInOrder(){
     	list = new ArrayList<Word>();
-    	printaInOrder(arrel);
+    	printaInOrder(getArrel());
     	return list;
     }
 
@@ -136,24 +136,24 @@ public class ArbreAVL {
     	if(node.esquerra != null){
 			printaInOrder(node.esquerra);
 		}else{
-			list.add(node.paraula);
+			list.add(node.getParaula());
 		}
 		if(node.dreta != null && node.esquerra !=null){
-			list.add(node.paraula);
+			list.add(node.getParaula());
 		}
 		if(node.dreta != null){
 			printaInOrder(node.dreta);
 		}else if(node.dreta != null || node.esquerra !=null){
-			list.add(node.paraula);
+			list.add(node.getParaula());
 		}
     }
     
     public void printaPreOrder(){
-    	printaPreOrder(arrel);
+    	printaPreOrder(getArrel());
     }
     
     private void printaPreOrder(Node arbre) {
-		System.out.print(arbre.paraula + ", ");
+		System.out.print(arbre.getParaula() + ", ");
 		if(arbre.esquerra != null){
 			printaPreOrder(arbre.esquerra);
 		}
@@ -170,6 +170,16 @@ public class ArbreAVL {
 
 	public void setLevel(int level) {
 		this.level = level;
+	}
+
+
+	public Node getArrel() {
+		return arrel;
+	}
+
+
+	public void setArrel(Node arrel) {
+		this.arrel = arrel;
 	}
     
 

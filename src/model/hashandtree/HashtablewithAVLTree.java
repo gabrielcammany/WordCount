@@ -1,6 +1,7 @@
 package model.hashandtree;
 
 import java.math.BigInteger;
+import java.util.ArrayList;
 
 import model.Word;
 import model.hashtable.HashFunctionLibrary;
@@ -61,7 +62,7 @@ public class HashtablewithAVLTree{
 		case "asci":
 			return new BigInteger(toAscii(str)).mod(new BigInteger(((Integer) tablesize).toString())).intValue();
 		case "basic":
-			return str.charAt(0);
+			return str.charAt(0)%tablesize;
 		}
 		return 0;
 	}
@@ -92,6 +93,18 @@ public class HashtablewithAVLTree{
 		return llista;
 	}*/
 
+	public ArrayList<Word> getTable() {
+		ArrayList<Word> llista = new ArrayList<>();
+		System.out.println(tablesize);
+		for(int i =0 ; i<tablesize; i++){
+			if(table[i].getTree().getArrel()!=null){			
+				System.out.println(i + "  " + table[i].getTree().getArrel().getParaula().getName());
+				llista.addAll(table[i].getTree().printaInOrder());
+			}
+		}
+		return llista;
+	}
+	
 	public BigInteger getCollisions() {
 		return collision;
 	}

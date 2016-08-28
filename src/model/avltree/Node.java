@@ -6,12 +6,12 @@ public class Node {
 	 Node esquerra, dreta;
      Node parent;
      int vegades = 0;
-     Word paraula;
+     private Word paraula;
      int altura = 0;
      
 
      public Node(Word data, Node parent) {
-         this.paraula = data;
+         this.setParaula(data);
          this.parent = parent;
      }
 
@@ -30,4 +30,12 @@ public class Node {
 
          this.dreta = child;
      }
+
+	public Word getParaula() {
+		return paraula;
+	}
+
+	public void setParaula(Word paraula) {
+		this.paraula = paraula;
+	}
 }

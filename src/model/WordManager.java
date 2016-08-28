@@ -32,6 +32,7 @@ public class WordManager {
 		else return 0;
 	}
 	public void count(){
+		tiempo.setTemps_iniciOrdenacio();
 		tiempo = new Time();
 		for(String paraula : words){
 			boolean trobat = Boolean.FALSE;
@@ -44,6 +45,7 @@ public class WordManager {
 			if(!trobat) llista.add(new Word(paraula));
 		}
 		tiempo.setTemps_final();
+		tiempo.setTemps_finalOrdenacio();
 	}
 	
 	public void countWithBinaryTree(){
@@ -53,7 +55,9 @@ public class WordManager {
 			binaryTree.trobaPosicio(binaryTree.getArbrePrincipal(), paraula,BinaryTree.LEFT);
 		}
 		tiempo.setTemps_final();
+		tiempo.setTemps_iniciOrdenacio();
 		llista = binaryTree.printaInOrder();
+		tiempo.setTemps_finalOrdenacio();
 		extra = "Binary Tree with " + binaryTree.getNivells() + " levels";
 	}
 	
@@ -64,7 +68,9 @@ public class WordManager {
 			avl.insertar(new Word(paraula));
 		}
 		tiempo.setTemps_final();
+		tiempo.setTemps_iniciOrdenacio();
 		llista = avl.printaInOrder();
+		tiempo.setTemps_finalOrdenacio();
 		extra = "Binary Tree with " + avl.getLevel() + " levels";
 	}
 	
@@ -75,7 +81,9 @@ public class WordManager {
 			hash.insert(paraula, paraula, hashfunction);
 		}
 		tiempo.setTemps_final();
+		tiempo.setTemps_iniciOrdenacio();
 		llista = hash.getTable();
+		tiempo.setTemps_finalOrdenacio();
 		extra = "Static Hash Table ("+ HashTable.hashfunction +") with " + words.size() + " size\n"+"Collision: " + hash.getCollisions();
 	}
 	public String getExtra() {
@@ -91,12 +99,15 @@ public class WordManager {
 	}
 
 	public void countWithHashTableplusTree(String hashfunction) {
-		HashtablewithAVLTree hash = new HashtablewithAVLTree(words.size(), hashfunction);
+		HashtablewithAVLTree hash = new HashtablewithAVLTree(24, hashfunction);
 		tiempo = new Time();
 		for(String paraula : words){
 			hash.insert(paraula);
 		}
 		tiempo.setTemps_final();
+		tiempo.setTemps_iniciOrdenacio();
+		llista = hash.getTable();
+		tiempo.setTemps_finalOrdenacio();
 		extra = "Static Hash Table ("+ HashTable.hashfunction +") with " + words.size() + " size\n"+"Collision: " + hash.getCollisions();
 		
 	}
