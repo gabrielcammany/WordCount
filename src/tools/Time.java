@@ -12,7 +12,7 @@ public class Time {
 	/**
 	 * Variables on guardarem el temps inicial i final
 	 */
-	private static int temps_inici, temps_final;
+	private int temps_inici, temps_final;
 	
 	/**
 	 * Constructor, setejem el temps inicial
@@ -34,7 +34,7 @@ public class Time {
      * @param temps_inici
      */
 	public void setTemps_inici(int temps_inici) {
-		Time.temps_inici = temps_inici;
+		this.temps_inici = temps_inici;
 	}
 
 	/**
@@ -49,7 +49,7 @@ public class Time {
 	 * @param temps_final
 	 */
 	public void setTemps_final() {
-		Time.temps_final = (int) System.currentTimeMillis();
+		this.temps_final = (int) System.currentTimeMillis();
 	}
 	
 	/**
