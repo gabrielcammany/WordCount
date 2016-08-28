@@ -115,6 +115,7 @@ public class Manager {
 	}
 
 	public void showResult() {
+		if(model == null)System.out.println("KASJDKAJSDKAS");
 		gf.createHTML(model, book.getName().split(".txt")[0]);
 	}
 	public static String humanReadableByteCount(long bytes, boolean si) {
