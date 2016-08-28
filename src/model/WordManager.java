@@ -59,16 +59,11 @@ public class WordManager {
 	
 	public void countWithAVLTree(){
 		ArbreAVL avl = new ArbreAVL();
-		tiempo = null;
+		tiempo = new Time();
 		for(String paraula : words){
-			if(tiempo == null){
-				tiempo = new Time();
-				avl.insertar(new Word(paraula));
-				tiempo.setTemps_final();
-			}else{
-				avl.insertar(new Word(paraula));
-			}
+			avl.insertar(new Word(paraula));
 		}
+		tiempo.setTemps_final();
 		llista = avl.printaInOrder();
 		extra = "Binary Tree with " + avl.getLevel() + " levels";
 	}

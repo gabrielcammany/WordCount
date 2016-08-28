@@ -1,7 +1,6 @@
 package estructura3;
 
 import model.avltree.ArbreAVL;
-import model.binarytree.BinaryTree;
 
 public class Tree {
 	boolean inici;

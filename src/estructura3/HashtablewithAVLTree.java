@@ -1,12 +1,8 @@
 package estructura3;
 
 import java.math.BigInteger;
-import java.util.ArrayList;
 
 import model.Word;
-import model.avltree.ArbreAVL;
-import model.binarytree.BinaryTree;
-import model.hashtable.HashFunctionLibrary;
 
 public class HashtablewithAVLTree{
 
@@ -19,7 +15,7 @@ public class HashtablewithAVLTree{
 	
 	//create hashtable
 	public HashtablewithAVLTree(){
-		this.tablesize = 25;
+		this.tablesize = 24;
 		table = new Tree[tablesize];
 		collision = BigInteger.valueOf(0);
 		for (int i = 0; i<tablesize; i++){
@@ -32,7 +28,7 @@ public class HashtablewithAVLTree{
 	}
 	
 	public int hash(String str){
-		return (str.charAt(0)%tablesize);
+		return (str.charAt(0)%tablesize)-1;
 	}
 	
 	/*
