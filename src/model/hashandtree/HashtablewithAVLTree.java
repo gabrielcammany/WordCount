@@ -1,4 +1,4 @@
-package estructura3;
+package model.hashandtree;
 
 import java.math.BigInteger;
 
