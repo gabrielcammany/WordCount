@@ -3,9 +3,9 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 
-import estructura3.HashtablewithAVLTree;
 import model.avltree.ArbreAVL;
 import model.binarytree.BinaryTree;
+import model.hashandtree.HashtablewithAVLTree;
 import model.hashtable.HashTable;
 import tools.Time;
 
