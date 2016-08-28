@@ -98,7 +98,6 @@ public class HashtablewithAVLTree{
 		System.out.println(tablesize);
 		for(int i =0 ; i<tablesize; i++){
 			if(table[i].getTree().getArrel()!=null){			
-				System.out.println(i + "  " + table[i].getTree().getArrel().getParaula().getName());
 				llista.addAll(table[i].getTree().printaInOrder());
 			}
 		}

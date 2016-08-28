@@ -94,9 +94,13 @@ public class GestorFitxers {
 		if (extra!=null) html.agregarText(extra);
 		html.agregarText("Time: " + tiempo.getDurationBreakdown(tiempo.gettempsExecucio()));
 		Time timeofOrder = new Time();
-		Collections.sort(words);
-		timeofOrder.setTemps_final();
-		html.agregarText("Order Time: " + timeofOrder.getDurationBreakdown(timeofOrder.gettempsExecucio()+tiempo.getTemps_finalOrdenacio()-tiempo.getTemps_iniciOrdenacio()));
+		if(model.getCount()==0 || model.getCount()==3){
+			Collections.sort(words);
+			timeofOrder.setTemps_final();
+		}
+		if(model.getCount()==0)html.agregarText("Order Time: " + timeofOrder.getDurationBreakdown(timeofOrder.gettempsExecucio()+tiempo.getTemps_finalOrdenacio()-tiempo.getTemps_iniciOrdenacio()));
+		else if(model.getCount()==3) html.agregarText("Order Time: " + timeofOrder.getDurationBreakdown(timeofOrder.gettempsExecucio()+tiempo.getTemps_finalOrdenacio()-tiempo.getTemps_iniciOrdenacio()));
+		else html.agregarText("Order Time: " + tiempo.getDurationBreakdown(tiempo.getTemps_finalOrdenacio()-tiempo.getTemps_iniciOrdenacio()));
 		html.agregarTaula();
 		MAX_HTML = words.size();
 		//MAX_HTML = 100;

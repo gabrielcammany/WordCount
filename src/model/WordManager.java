@@ -15,6 +15,7 @@ public class WordManager {
 	private ArrayList<Word> llista;
 	private String extra;
 	private Time tiempo;
+	private int count;
 	
 	public WordManager(){
 		llista = new ArrayList<>();
@@ -32,8 +33,9 @@ public class WordManager {
 		else return 0;
 	}
 	public void count(){
-		tiempo.setTemps_iniciOrdenacio();
+		setCount(0);
 		tiempo = new Time();
+		tiempo.setTemps_iniciOrdenacio();
 		for(String paraula : words){
 			boolean trobat = Boolean.FALSE;
 			for(Word w : llista){
@@ -48,7 +50,10 @@ public class WordManager {
 		tiempo.setTemps_finalOrdenacio();
 	}
 	
+	
+	
 	public void countWithBinaryTree(){
+		setCount(1);
 		BinaryTree binaryTree = new BinaryTree();
 		tiempo = new Time();
 		for(String paraula : words){
@@ -62,6 +67,7 @@ public class WordManager {
 	}
 	
 	public void countWithAVLTree(){
+		setCount(2);
 		ArbreAVL avl = new ArbreAVL();
 		tiempo = new Time();
 		for(String paraula : words){
@@ -75,6 +81,7 @@ public class WordManager {
 	}
 	
 	public void countWithHashTable(String hashfunction){
+		setCount(3);
 		tiempo = new Time();
 		HashTable hash = new HashTable(words.size(), hashfunction);
 		for(String paraula : words){
@@ -99,6 +106,7 @@ public class WordManager {
 	}
 
 	public void countWithHashTableplusTree(String hashfunction) {
+		setCount(4);
 		HashtablewithAVLTree hash = new HashtablewithAVLTree(24, hashfunction);
 		tiempo = new Time();
 		for(String paraula : words){
@@ -118,5 +126,13 @@ public class WordManager {
 
 	public void setTiempo(Time tiempo) {
 		this.tiempo = tiempo;
+	}
+
+	public int getCount() {
+		return count;
+	}
+
+	public void setCount(int count) {
+		this.count = count;
 	}	
 }
