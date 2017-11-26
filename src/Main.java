@@ -20,8 +20,7 @@ public class Main {
 				vista.registerController(controlador);
 				// fem la vista visible
 				vista.setVisible(true);				
-			}
-		});
+			}		});
 		
 	}
 	
