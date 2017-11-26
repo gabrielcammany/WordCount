@@ -58,7 +58,7 @@ In the other end, the binary tree, as it has the simplest logic, the memory usag
 
 #### Execution time
 
-Having in consideration the fact that the hybrid structure, is not well implemented, we found out that, the tree logic has some sort of handicap. The difference between each structure is excessive, so there is still some work to do in order to improve it.  
+Having in consideration the fact that the hybrid structure is not well implemented, we found out that, the tree logic has some sort of handicap. The difference between each structure is not normal, so there is still some work to do in order to improve it.  
 
 ![](images/memory_usage.png)
 
